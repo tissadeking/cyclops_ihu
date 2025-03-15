@@ -1,0 +1,19 @@
+{
+  'host': '0.0.0.0',
+  #'host': '172.21.0.1',
+  'port': '5002',
+  'dc_port': '5001',
+  #groq api key
+  'groq_api_key': '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',
+
+  #directories and files
+  'current_user_file': 'current_user.csv',
+  'policy_store_file': 'policy_store.csv',
+  'processed_data_file': 'processed_data.txt',
+  'retrieved_data_file': 'data_folder/retrieved_data.txt',
+  'retrieved_data_folder': 'data_folder',
+
+
+
+}
+

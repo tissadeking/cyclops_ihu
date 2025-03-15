@@ -1,0 +1,16 @@
+mysql-connector-python
+langchain-openai
+pandas
+flask
+llama-index-llms-groq
+scikit-learn
+numpy 
+scipy
+requests
+
+#sentence-transformers
+#rank-bm25
+#nltk
+#llama-index
+#llama-index-embeddings-huggingface
+#llama-index-core

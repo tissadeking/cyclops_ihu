@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+body {
+	/*background-color: lightyellow;*/
+	background: linear-gradient(to bottom, #cceeff, #99ccff); /* Light blue gradient */
+    font-family: Arial, sans-serif;
+	
+}
+h2 {
+	/*position: relative;
+	vertical-align:middle;*/
+	text-align: center;
+	/*background-color: white; /* Deep blue header */
+    /*color: #337ab7;*/
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.td-class {
+	font-size: 1.2rem;
+}
+
+/* CSS to grey out the select box when disabled */
+select:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+
+
+/*Newly added to enhance*/
+/* General Styles */
+body {
+    /*background: linear-gradient(to bottom right, #d4f1f4, #76e6da);*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    /*background: linear-gradient(to bottom, #cceeff, #99ccff);
+    background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
+		, #0073e6);*/
+	background: linear-gradient(to bottom, #1E90FF, #00BFFF);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.main-div {
+	width: 800px; 
+	height:900px; 
+	margin: auto; 
+	margin-top: 50px; 
+	margin-bottom: 50px;
+	display: flex;
+    flex-direction: column; /* Ensures vertical alignment */
+    align-items: center; /* Centers content */
+    width: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Container */
+form {
+    width: 70%;
+    height: 70%;
+    margin: 0px auto;
+    padding: 20px;
+    /*background: #e6f9f2;*/
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 0.5px solid #67c8a7;
+    background-color: #e6f2ff; 
+    border-bottom: none;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+table {
+	width: 100%;
+	height: 100%;
+}
+
+
+/* Input Fields */
+form input[type="text"], 
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 2px solid #00BFFF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus, 
+form select:focus {
+    outline: none;
+    border-color: #00BFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Radio Buttons */
+form input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Buttons */
+form button {
+    width: 45%;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    transform: scale(1.05);
+}
+
+form button[type="submit"] {
+    background-color: #1E90FF;
+    margin-left: 10px;
+    width: 40%;
+}
+
+form button[type="reset"] {
+    background-color: #d9534f;
+    width: 40%;
+    margin-right: 10px;
+}
+
+form button[type="submit"]:hover {
+    background-color: blue;
+}
+
+form button[type="reset"]:hover {
+    background-color: #b52b29;
+}
+
+.evaluate-btn {
+    background-color: #1E90FF; /* Dark blue button */
+    margin-left: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+.evaluate-btn:hover {
+    background-color: blue;
+}
+
+.reset-btn {
+    background-color: #d9534f; /* Red for reset */
+    margin-right: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+.reset-btn:hover {
+    background-color: #b52b29;
+}
+
+.button-container {
+    width: 70%;
+    height: 8%;
+    /*display: inline-block;*/
+    display: flex;
+    justify-content: space-between; /* Ensures buttons are balanced */
+    margin-top: 0px;
+    margin-left: 0px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 0.5px solid #67c8a7;
+    background-color: #e6f2ff; 
+    border-top: none;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+
+    form button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

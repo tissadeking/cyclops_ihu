@@ -1,0 +1,9 @@
+{
+  'classification': ["pac", "log", "mnb", "mlpc", "svc",
+  "dt", "kn", "rf"],
+  'regression': ["linear", "lasso", "ridge", "svr", "dt",
+  "nn", "rf"],
+  'clustering': ["affinity", "dbscan", "gmm", "heirarchy", "km", "optics"],
+  'anomaly_detection': ["autoencoders", "isolation", "one_class_svm"],
+  'time_series_forecasting': ["ar", "arima", "var"],
+}
