@@ -1,7 +1,9 @@
 {
+  #host and port to deploy the container
   'host': '0.0.0.0',
   #'host': '172.21.0.1',
   'port': '5002',
+  #port for the script dc_net.py which replicates the connection to NLP Chat
   'dc_port': '5001',
   #groq api key
   'groq_api_key': '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',

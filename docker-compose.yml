@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  #for mysql service to host the cyclops database
   mysql:
     image: mysql:latest
     container_name: mysql-container
@@ -9,19 +10,18 @@ services:
       MYSQL_ROOT_PASSWORD: password123
       MYSQL_PASSWORD: password123
       MYSQL_DATABASE: cyclops
-    #networks:
-    #  - my_custom_network
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
+    #  - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Auto-run SQL script
 
+  #for the ihu itself
   ihu:
     build: .
     container_name: ihu
-    #network_mode: "host"  # This allows direct access to host network
     ports:
-      - "5002:5002"  # Ensure this matches the Flask app's port
+      - "5002:5002"
     depends_on:
       - mysql
     environment:
@@ -31,5 +31,5 @@ services:
       DB_NAME: cyclops
     command: ["python3", "-u", "main.py"]
 
-volumes:
-  mysql-data:
+#volumes:
+#  mysql-data:

@@ -17,6 +17,8 @@ def convert_dict_to_text(df):
 def convert_df_to_text(df):
     return df.to_string(index=False)
 
+#to match pair of key and value retrieved during intent compilation with most suitable class
+#it does same for most suitable property
 def get_prompt(df1, ref_description):
     df1_text = convert_dict_to_text(df1)
     ref_description = convert_dict_to_text(ref_description)
@@ -40,11 +42,12 @@ def get_prompt(df1, ref_description):
     """
     return prompt
 
-#Function to send the prompt to LLM
+#function to send the prompt to LLM
 def match_with_groq(prompt):
     response = llama3.invoke(prompt)
     return response.content
 
+#call the functions above and output the result as json
 def match_llm_zero(df1, ref):
     prompt = get_prompt(df1, ref)
     result = match_with_groq(prompt)

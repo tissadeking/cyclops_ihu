@@ -1,6 +1,9 @@
 {
-  'classification': ["pac", "log", "mnb", "mlpc", "svc",
+  #ML tasks and corresponding models hosted in the pipeline executor
+  'num_classification': ["pac", "log", "mnb", "mlpc", "svc",
   "dt", "kn", "rf"],
+  'text_classification': [ "pac", "log", "mnb", "mlpc", "svc",
+                      "dt", "kn", "rf" ],
   'regression': ["linear", "lasso", "ridge", "svr", "dt",
   "nn", "rf"],
   'clustering': ["affinity", "dbscan", "gmm", "heirarchy", "km", "optics"],

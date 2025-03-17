@@ -1,11 +1,13 @@
 import requests
 import json
 
-# API endpoint (update with your actual URL if running on a server)
+#script to send intents
+
+#API endpoint for sending intents
 url = "http://127.0.0.1:5002/intent"
 
-# Data to send in PUT request
-'''intent = {
+#exploratory intent
+intent = {
     "intent_type": "exploratory",
     "fields": {
         "data": "public procurement",
@@ -33,6 +35,9 @@ url = "http://127.0.0.1:5002/intent"
     }
 }
 '''
+
+#analytical intent
+#df = pd.read_csv("policy_store.csv")
 intent = {
     "intent_type": "analytical",
     "fields": {
@@ -61,8 +66,7 @@ intent = {
     }
 
 }
-
-
+'''
 # Convert dictionary to JSON
 headers = {"Content-Type": "application/json"}
 response = requests.put(url, data=json.dumps(intent), headers=headers)
