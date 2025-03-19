@@ -32,12 +32,14 @@ from data_retriever import data_retriever_fun
 }'''
 
 def sparql_generator_fun(policy):
-    #Just for testing, the real functionality is highlighted above
+    #Just for testing, the real functionality is highlighted above and implemented by the function below
     #df = pd.read_csv('policy_store.csv')
     #df = pd.read_csv(config.policy_store_directory)
+
+    #real functionality of generating sparql queries from lists of classes and properties
     def generate_sparql_queries(query_list, prefixes):
         """
-        Generates a list of SPARQL queries dynamically, ignoring undefined classes and properties.
+        Generates a list of SPARQL queries
         """
         queries = []
         for query_dict in query_list:
@@ -48,14 +50,11 @@ def sparql_generator_fun(policy):
                 class_variable = class_name.lower()
 
                 for prefix, uri in prefixes.items():
-                    # if check_class_exists(sparql_endpoint, username, password, prefix, class_name):
                     query_body += f"  ?{class_variable} a {prefix}:{class_name} ;\n"
-                    #    if check_property_exists(sparql_endpoint, username, password, prefix, property_name):
                     query_body += f"          {prefix}:{property_name} ?{property_name.lower()} .\n"
                     selected_variables.append(f"?{property_name.lower()}")
                     break
 
-                # if query_body:
                 query = f"""
                 {query_prefixes}
                 SELECT ?{class_variable} {' '.join(selected_variables)}
@@ -66,12 +65,11 @@ def sparql_generator_fun(policy):
                 queries.append(query)
         for q in queries:
             print(q, "\n")
+        #call the function to query the endpoint with the generated queries straight up
         return data_retriever_fun(queries)
 
-    '''prefixes = {
-        "epo": "http://data.europa.eu/a4g/ontology#",
-        "dct": "http://purl.org/dc/terms/"
-    }'''
+    #gets the prefixes from the config.yml file
     prefixes = config.prefixes
+    #calls the function to generate sparql queries which also implements the querying
     df = generate_sparql_queries(policy['query_list'], prefixes)
     return retrieve_data_fun(df, policy['intent_id'], policy['userid'])
