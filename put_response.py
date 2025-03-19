@@ -29,7 +29,7 @@ intent = {
             "specific_location": ""
         },
         "time": "last year",
-        "query": "explain the class in the dataset",
+        "query": "get the notices in Europe last year",
         "intent_id": "98HTS738HD",
         "userid": "!!06!E85QWE2VBJ6NNLV"
     }

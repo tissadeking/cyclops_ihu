@@ -51,5 +51,10 @@ def match_with_groq(prompt):
 def match_llm_zero(df1, ref):
     prompt = get_prompt(df1, ref)
     result = match_with_groq(prompt)
-    result = json.loads(result)
+    #result = json.loads(result)
+    try:
+        result = json.loads(result)
+    except json.JSONDecodeError as e:
+        print("JSON Decode Error:", e)
+        return None
     return result

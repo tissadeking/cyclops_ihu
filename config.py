@@ -33,3 +33,10 @@ retrieved_data_folder = files_directory + parameters['retrieved_data_folder']
 
 #the ML tasks and models
 task_models = task_parameters
+
+#prefixes for retrieving data through the sparql endpoint
+prefixes = parameters['prefixes']
+#sparql endpoint and login details
+sparql_endpoint = parameters['sparql_endpoint']
+username = parameters['username']
+password = parameters['password']

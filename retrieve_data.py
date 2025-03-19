@@ -18,10 +18,11 @@ def retrieve_data_fun(df, intent_id, userid):
     data_cols = json.dumps(data_cols)
     #convert data to json
     df_json = df.to_json()
-    #delete existing entry in the data store with the same user id and intent id with incoming user id and intent id
-    delete_data_store(userid, intent_id)
-    #save the new entry to the data store with user id, intent id, data in json and columns
-    insert_data_store(userid, intent_id, df_json, data_cols)
+    if df_json != {}:
+        #delete existing entry in the data store with the same user id and intent id with incoming user id and intent id
+        delete_data_store(userid, intent_id)
+        #save the new entry to the data store with user id, intent id, data in json and columns
+        insert_data_store(userid, intent_id, df_json, data_cols)
 
     return userid, intent_id, df_json, data_cols
 

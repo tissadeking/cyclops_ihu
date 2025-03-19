@@ -1,30 +1,30 @@
 data,class,class_description,property,property_description
-public procurement,winner,organisation that won a tender or contract,hasLegalName,the legal name of an organisation
-public procurement,contract,contract,hasContractConclusionDate,date of contract conclusion
-public procurement,contract,contract,hasTitle,title of contract
-public procurement,buyer,buyer of a contract,hasLegalName,the legal name of an buyer organisation
-public procurement,organization,organisation,hasLegalName,the legal name of an organisation
-public procurement,organization,organisation,hasMainActivity,main activitiy of organisation
-public procurement,procedure,procurement procedure,hasTitle,title of procedure
-public procurement,procedure,procurement procedure,hasProcedureType,type of procedure
-public procurement,procedure,procurement procedure,hasDescription,description of procedure
-public procurement,procedure,procurement procedure,isAccelerated,whether procedure is accelerated
-public procurement,procedure,procurement procedure,hasAdditionalInformation,additional information about procedure
-public procurement,procedure,procurement procedure,hasProcurementScopeDividedIntoLot,has divided procurement scope
-public procurement,procedure,procurement procedure,urgency_name,urgency name
-public procurement,notice,notice,hasID,ID of notice
-public procurement,notice,notice,hasPublicationDate,notice publication date
-public procurement,notice,notice,hasDispatchDate,notice dispatch date or submission deadline
-public procurement,notice,notice,publisher,notice publisher
-public procurement,tender,tender,tenderSubmissionDeadline,dispatch date of tender
-public procurement,tender,tender,hasPublicationDate,tender publication date
-public procurement,tender,tender,hasID,ID of tender
-public procurement,lot,lots,hasDescription,description of lot
-public procurement,lot,lots,hasAdditionalInformation,additional information about lot
-public procurement,monetary value,amount in millions,hasAmountValue,value of the money
-public procurement,monetary value,amount in millions,hasCurrency,currency of the money
-public procurement,identifier,identifier,hasIdentifierValue,value of identifier
-public procurement,address,address,hasNutsCode,nuts code of procurement address
-public procurement,address,address,postName,name of address
-public procurement,contract_term,contract term,hasContractNatureType,contract type
-public procurement,location,location,hasNutsCode,nuts code of procurement location
+public procurement,Winner,organisation that won a tender or contract,hasLegalName,the legal name of an organisation
+public procurement,Contract,contract,hasContractConclusionDate,date of contract conclusion
+public procurement,Contract,contract,hasTitle,title of contract
+public procurement,Buyer,buyer of a contract,hasLegalName,the legal name of an buyer organisation
+public procurement,Organization,organisation,hasLegalName,the legal name of an organisation
+public procurement,Organization,organisation,hasMainActivity,main activitiy of organisation
+public procurement,Procedure,procurement procedure,hasTitle,title of procedure
+public procurement,Procedure,procurement procedure,hasProcedureType,type of procedure
+public procurement,Procedure,procurement procedure,hasDescription,description of procedure
+public procurement,Procedure,procurement procedure,isAccelerated,whether procedure is accelerated
+public procurement,Procedure,procurement procedure,hasAdditionalInformation,additional information about procedure
+public procurement,Procedure,procurement procedure,hasProcurementScopeDividedIntoLot,has divided procurement scope
+public procurement,Procedure,procurement procedure,urgency_name,urgency name
+public procurement,Notice,notice,hasID,ID of notice
+public procurement,Notice,notice,hasPublicationDate,notice publication date
+public procurement,Notice,notice,hasDispatchDate,notice dispatch date or submission deadline
+public procurement,Notice,notice,publisher,notice publisher
+public procurement,Tender,tender,tenderSubmissionDeadline,dispatch date of tender
+public procurement,Tender,tender,hasPublicationDate,tender publication date
+public procurement,Tender,tender,hasID,ID of tender
+public procurement,Lot,lots,hasDescription,description of lot
+public procurement,Lot,lots,hasAdditionalInformation,additional information about lot
+public procurement,Monetary value,amount in millions,hasAmountValue,value of the money
+public procurement,Monetary value,amount in millions,hasCurrency,currency of the money
+public procurement,Identifier,identifier,hasIdentifierValue,value of identifier
+public procurement,Address,address,hasNutsCode,nuts code of procurement address
+public procurement,Address,address,postName,name of address
+public procurement,Contract_term,contract term,hasContractNatureType,contract type
+public procurement,Location,location,hasNutsCode,nuts code of procurement location

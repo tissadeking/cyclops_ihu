@@ -18,7 +18,7 @@ This repository contains some not all of the components in the CyclOps Intent-ba
     sudo docker-compose build
     sudo docker-compose up
     ```
-## Accessing the service
+## Accessing the software
 - The API is available at http:127.0.0.1:5002 or any other IP with the same port.
 - It shows the first page which a user clicks to enter the page through which they can register or login.
 - For successful login, the NLP Chat or dc_net.py needs to be running. 
@@ -27,6 +27,7 @@ This repository contains some not all of the components in the CyclOps Intent-ba
 - To test with NLP Chat, go to the file main.py.
 - Go to line 114 and change the URL from f"http://{host}:{dc_port}?userid={userid}" to the NLP Chat URL with userid as the path.
 - Then follow the idea in dc_net.py to implement a method to allow successful loading of the NLP Chat through the URL with the userid.
+- The implementation ensures that a userid is found in the users database before the user can access the NLP Chat.
 - Then, build and run the Docker container as shown above.
 
 ## Testing with dc_net.py

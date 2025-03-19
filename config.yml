@@ -15,6 +15,15 @@
   'retrieved_data_file': 'data_folder/retrieved_data.txt',
   'retrieved_data_folder': 'data_folder',
 
+  #prefixes for the sparql query endpoint
+  'prefixes': {
+    "epo": "http://data.europa.eu/a4g/ontology#",
+    "dct": "http://purl.org/dc/terms/"
+  },
+  #sparql endpoint and login details for basic authentication
+  'sparql_endpoint': 'https://cyclops-dev.ontopic.dev/sparql-endpoint/uc3-mitender/sparql',
+  'username': 'tubs',
+  'password': 'RenfeokKinlaJis',
 
 
 }
