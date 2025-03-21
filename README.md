@@ -24,15 +24,13 @@ This repository contains some not all of the components in the CyclOps Intent-ba
 - For successful login, the NLP Chat or dc_net.py needs to be running. 
 
 ## Testing with NLP Chat
-- To test with NLP Chat, go to the file main.py.
-- Go to line 114 and change the URL from f"http://{host}:{dc_port}?userid={userid}" to the NLP Chat URL with userid as the path.
-- Then follow the idea in dc_net.py to implement a method to allow successful loading of the NLP Chat through the URL with the userid.
-- The implementation ensures that a userid is found in the users database before the user can access the NLP Chat.
-- Then, build and run the Docker container as shown above.
+- To test with NLP Chat, build and run the software as it is on a terminal.
+- Line 127 of the main.py file contains the NLP Chat URL with userid as the path.
+- Successful login redirects the user to NLP Chat with their userid.
 
 ## Testing with dc_net.py
-- dc_net.py is only a replica of the verification system of the NLP Chat before a user is redirected to the chat.
-- Build and run the software as it is on a terminal.
+- dc_net.py is only a replica of the verification system supposed to be provisioned by the NLP Chat before a user is redirected to the chat.
+- Go to line 127 of the main.py file and change the NLP Chat URL to f"http://{host}:{dc_port}?userid={userid}".
 - Open another terminal instance, cd into the root folder of the project and run:
    ```
     python3 dc_net.py
