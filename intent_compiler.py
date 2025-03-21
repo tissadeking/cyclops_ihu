@@ -2,8 +2,10 @@ import pandas as pd, config
 from match_policies import match_llm_zero
 from json_pipeline_orchestrator import json_pipeline_orchestrator_fun
 from classify_text_or_num import classify_task
+#from match_policies_tfidf import match_tfidf
 
 #read the policy store into a dataframe
+#df = pd.read_csv('policy_store.csv')
 df = pd.read_csv(config.policy_store_directory)
 
 #create lists for the different columns of the policy store
@@ -44,8 +46,12 @@ def intent_compiler_fun(fields):
         #use class description to find class in class_list that matches best with extract
         #add class to query_class_list
         #got to file match_llm_zero to see how the matching is done
-        class_description = match_llm_zero(extract, class_description_list)["answer"]
+        #class_description = match_tfidf(extract, class_description_list)["answer"]
+        #class_description = match_tfidf(extract, class_description_list)
         try:
+            class_description = match_llm_zero(extract, class_description_list)["answer"]
+            #class_description = match_tfidf(extract, class_description_list)["answer"]
+            #print('class descr: ', class_description)
             class_ind = class_description_list.index(class_description)
             class_name = class_list[class_ind]
             if class_name not in query_class_list:
@@ -57,9 +63,12 @@ def intent_compiler_fun(fields):
     for extract in extract_list:
         # use property description to find property in property_list that matches best with extract
         # add property to query_property_list
-        property_description = match_llm_zero(extract, property_description_list)["answer"]
-        #print('prop description: ', property_description)
+        #property_description = match_tfidf(extract, property_description_list)["answer"]
+        #property_description = match_tfidf(extract, property_description_list)
         try:
+            property_description = match_llm_zero(extract, property_description_list)["answer"]
+            #print('prop description: ', property_description)
+            #property_description = match_tfidf(extract, property_description_list)["answer"]
             property_ind = property_description_list.index(property_description)
             property_name = property_list[property_ind]
             if property_name not in query_property_list:
@@ -124,6 +133,34 @@ def intent_compiler_fun_2(intent):
     return json_pipeline_orchestrator_fun(intent)
 
 
+'''intent = {
+    "intent_type": "exploratory",
+    "fields": {
+        "data": "public procurement",
+        "parameter": "notices",
+        "aggregate": "count",
+        "description": {
+            "event": "",
+            "reference": "",
+            "sentiment": ""
+        },
+        "entity": "",
+        "constraints": [],
+        "influence": {
+            "cause": "",
+            "effect": ""
+        },
+        "location": {
+            "main_location": "Europe",
+            "specific_location": ""
+        },
+        "time": "last year",
+        "query": "get the notices in Europe last year",
+        "intent_id": "98HTS738HD",
+        "userid": "!!06!E85QWE2VBJ6NNLV"
+    }
+}
+intent_compiler_fun(intent['fields'])'''
 
 
 

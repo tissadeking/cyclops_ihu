@@ -1,5 +1,6 @@
+import json
 import random
-import string
+import string, requests
 import sql_wait
 from flask import Flask, render_template, redirect, request, jsonify
 from mysql.connector import Error
@@ -74,7 +75,18 @@ def update_field():
         answer = sparql_generator_fun(policy)
         # SEND A PUT OR POST REQUEST TO NLP CHAT WITH THE ANSWER
         # ANSWER has the userid, intent_id, df, df_columns,
-        return jsonify({"answer": answer}), 200
+        url = "https://chatapi.datacalculus.net/receive-request"
+        #userid, intent_id, df_json
+        reply = {
+            "userID": answer[0],
+            "intentID": answer[1],
+            "Answer": answer[2]
+        }
+        # Convert dictionary to JSON
+        headers = {"Content-Type": "application/json"}
+        requests.post(url, data=json.dumps(reply), headers=headers)
+        #return jsonify({"answer": answer}), 200
+        return jsonify({"reply": reply}), 200
     # for analytical intent
     elif data["intent_type"] == "analytical":
         pipeline = intent_compiler_fun_2(field_data)
@@ -111,7 +123,8 @@ def login_fun():
         #GET USER ID
         userid = sql_func.get_userid(username)
         #redirect to nlp chat url with the user id
-        chat_url = f"http://{host}:{dc_port}?userid={userid}"
+        #chat_url = f"http://{host}:{dc_port}?userid={userid}"
+        chat_url = f"https://chat.datacalculus.net/?userID={userid}"
         return redirect(chat_url)
     else:
         login_status = "Incorrect Username or Password"
