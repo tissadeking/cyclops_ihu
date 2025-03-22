@@ -40,3 +40,10 @@ prefixes = parameters['prefixes']
 sparql_endpoint = parameters['sparql_endpoint']
 username = parameters['username']
 password = parameters['password']
+
+#MinIO credentials and endpoint for long-term storage
+minio_url = parameters['minio_url']  # API port
+minio_endpoint = parameters['minio_endpoint']
+access_key = parameters['access_key']
+secret_key = parameters['secret_key']
+bucket_name = parameters['bucket_name']

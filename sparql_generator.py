@@ -63,8 +63,8 @@ def sparql_generator_fun(policy):
                 }}
                 """.strip()
                 queries.append(query)
-        for q in queries:
-            print(q, "\n")
+        #for q in queries:
+        #    print(q, "\n")
         #call the function to query the endpoint with the generated queries straight up
         return data_retriever_fun(queries)
 

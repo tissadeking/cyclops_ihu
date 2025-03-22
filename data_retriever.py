@@ -42,15 +42,15 @@ def data_retriever_fun(queries):
     data_list = execute_sparql_queries(queries, sparql_endpoint, username, password)
     #merged_data = merge_data(data_list)
     #print(merged_data)
-    print(data_list)
+    #print(data_list)
     new_data_list = []
     #make the data contain only values of the classes and properties and not other things like type, etc.
     for data in data_list:
         for key in list(data.keys()):
             data[key] = data[key]['value']
         new_data_list.append(data)
-    print(new_data_list)
+    #print(new_data_list)
     #convert data to dataframe
     data = pd.DataFrame(new_data_list)
-    print(data)
+    #print(data)
     return data

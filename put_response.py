@@ -7,7 +7,7 @@ import json
 url = "http://127.0.0.1:5002/intent"
 
 #exploratory intent
-'''intent = {
+intent = {
     "intent_type": "exploratory",
     "fields": {
         "data": "public procurement",
@@ -30,7 +30,7 @@ url = "http://127.0.0.1:5002/intent"
         },
         "time": "last year",
         "query": "get the notices in Europe last year",
-        "intent_id": "98HTS738HD",
+        "intent_id": "98HTS73867T",
         "userid": "!!06!E85QWE2VBJ6NNLV"
     }
 }
@@ -66,6 +66,28 @@ intent = {
     }
 
 }
+'''
+
+'''from minio import Minio
+minio_endpoint = "localhost:9100"
+access_key = "minioadmin"
+secret_key = "minioadmin"
+bucket_name = "long-term"
+#file_path = "policy_store.csv"
+#download_path = "policy_store_downloaded.csv"
+
+print(minio_endpoint, access_key, secret_key, bucket_name)
+
+# Initialize MinIO client
+minio_client = Minio(
+    minio_endpoint,  # Replace with your MinIO server URL
+    access_key=access_key,  # Replace with your MinIO access key
+    secret_key=secret_key,  # Replace with your MinIO secret key
+    secure=False  # Set to False if not using HTTPS
+)
+
+#client = Minio("minio:9000", "your-access-key", "your-secret-key", secure=False)
+print(minio_client.list_buckets())  # This should return a list of buckets'''
 
 # Convert dictionary to JSON
 headers = {"Content-Type": "application/json"}

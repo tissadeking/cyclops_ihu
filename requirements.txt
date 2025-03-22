@@ -8,6 +8,7 @@ numpy
 scipy
 requests
 SPARQLWrapper
+minio
 
 #sentence-transformers
 #rank-bm25

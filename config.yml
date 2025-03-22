@@ -25,6 +25,12 @@
   'username': 'tubs',
   'password': 'RenfeokKinlaJis',
 
+  #MinIO credentials and endpoint for long-term storage
+  'minio_url': "http://minio:9100",  # API port
+  'minio_endpoint': "minio:9000",
+  'access_key': "minioadmin",
+  'secret_key': "minioadmin",
+  'bucket_name': "long-term",
 
 }
 
