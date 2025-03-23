@@ -25,7 +25,7 @@ def retrieve_data_fun(df, intent_id, userid):
         #save the new entry to the data store with user id, intent id, data in json and columns
         insert_data_store(userid, intent_id, df_json, data_cols)
 
-        # To store data in long-term storage
+        # To store data in long-term storage (minio object store)
         # Example object details
         object_name = userid + '-' + intent_id
         #write data to csv

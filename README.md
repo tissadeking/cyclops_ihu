@@ -1,7 +1,7 @@
 # Intent-Based Human Interface (CyclOps)
 
 This repository contains some not all of the components in the CyclOps Intent-based Human Interface (IHU).
-
+This is only the TUBS IHU Part. The components from the other partners which are NLP Chat and Info Retrievel are not here.
 
 ## Installation
 
