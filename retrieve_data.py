@@ -4,13 +4,15 @@
 import os, json, config
 from minio_crud import create_object, ensure_bucket
 from sql_func import insert_data_store, delete_data_store
+from query_retrieved_data import llm_query_fun_3_8
 
 #convert df to string
 def convert_df_to_text(df):
     return df.to_string(index=False)
 
 #parse data sent as dataframe by the sparql generator
-def retrieve_data_fun(df, intent_id, userid):
+def retrieve_data_fun(df, intent_id, userid, query):
+    global answer
     file_path = config.retrieved_data_directory
     #save data to retrieved_data.txt inside data_folder
     df.to_json(file_path)
@@ -39,7 +41,17 @@ def retrieve_data_fun(df, intent_id, userid):
         # delete the uploaded csv file as it's not needed anymore
         if (os.path.exists(csv_name) and os.path.isfile(csv_name)):
             os.remove(csv_name)
+    #converts the df to text before querying
+    df_text = convert_df_to_text(df)
+    try:
+        #query the retrieved data
+        answer = llm_query_fun_3_8(query, df_text)
+        #answer = json.loads(answer)
+    except:
+        #if it doesn't work it returns the data as a json
+        answer = df_json
 
-    return userid, intent_id, df_json, data_cols
+    return userid, intent_id, answer, data_cols
+    #return userid, intent_id, df_json, data_cols
 
 

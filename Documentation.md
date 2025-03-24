@@ -27,9 +27,8 @@ The SQL database and the tables: users and data_store are created automatically 
 - *data_retriever_fun* uses the function *execute_sparql_queries* also found in the same script to query the sparql endpoint of IKB defined in the config.yml file. It retrieves this data afterwards in the form of a dataframe.
 - The data is sent to the function *retrieve_data_fun* in retrieve_data.py by *sparql_generator_fun* in sparql_generator.py.
 - *retrieve_data_fun* then stores the data with userid and intentid inside the data_store with the functions *delete_data_store* and *insert_data_store* both found in sql_func.py, and also converts it to csv file and stores it inside the long-term storage minio bucket through the functions *ensure_bucket* and *create_object* both found in minio_crud.py.
-- The function *retrieve_data_fun* also returns the userid, intentid, json format of the data and columns of the data as output, but only the first three parameters are selected as parts of the answer by the funtion *update_field* in main.py.
+- The function *retrieve_data_fun* also tries to query the retrieved data with the function *llm_query_fun_3_8* written in query_retrieved_data.py. If the query goes successful then it returns the userid, intentid, answer to the query and columns of the data as output. However, if the query doesn't work, it returns the userid, intentid, json format of the data and columns of the data as output, but only the first three parameters are selected as parts of the answer by the funtion *update_field* in main.py.
 - After everything, the answer is sent as a post request to the NLP Chat API endpoint "https://chatapi.datacalculus.net/receive-request" by the same function *update_field* in main.py
-
 
  
 ## Workflow 2 - Analytical Workflow

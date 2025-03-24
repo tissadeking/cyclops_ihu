@@ -104,6 +104,7 @@ def intent_compiler_fun(fields):
     policy['query_list'] = query_list
     policy['intent_id'] = fields['intent_id']
     policy['userid'] = fields['userid']
+    policy['query'] = fields['query']
     #logging.info("policy: ", policy)
     print('policy: ', policy)
     return policy

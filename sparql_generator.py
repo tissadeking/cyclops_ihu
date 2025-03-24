@@ -72,4 +72,4 @@ def sparql_generator_fun(policy):
     prefixes = config.prefixes
     #calls the function to generate sparql queries which also implements the querying
     df = generate_sparql_queries(policy['query_list'], prefixes)
-    return retrieve_data_fun(df, policy['intent_id'], policy['userid'])
+    return retrieve_data_fun(df, policy['intent_id'], policy['userid'], policy['query'])
