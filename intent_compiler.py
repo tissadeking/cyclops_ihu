@@ -1,7 +1,10 @@
+import os
+
 import pandas as pd, config
 from match_policies import match_llm_zero
 from json_pipeline_orchestrator import json_pipeline_orchestrator_fun
 from classify_text_or_num import classify_task
+from minio_crud import retrieve_object
 #from match_policies_tfidf import match_tfidf
 
 #read the policy store into a dataframe
@@ -107,6 +110,7 @@ def intent_compiler_fun(fields):
 
 #compilation of analytical intents
 def intent_compiler_fun_2(intent):
+    global data
     #test_fraction is the ratio of test to train data during train_test_split
     intent["test_fraction"] = 0.2
     #scaling bounds is the boundary for scaling of values in a column of a dataframe
@@ -117,18 +121,27 @@ def intent_compiler_fun_2(intent):
     if intent["task"] == "classification":
         #get list of data columns
         #cols = intent["data"][0].columns.tolist()
+        #retrieve data from long-term storage
+        object_name = intent["data"][0]
+        download_path = object_name + '.csv'
+        retrieve_object(object_name, download_path)
+        data = pd.read_csv(download_path)
         #TO BE CHANGED TO IMPLEMENTATION WITH INTENT ID AND STORED DATA LATER
-        df = pd.read_csv(config.policy_store_directory)
-        cols = df.columns.tolist()
+        #df = pd.read_csv(config.policy_store_directory)
+        #get list of data columns
+        cols = data.columns.tolist()
         #however, if user had defined columns they want, use theirs instead
         if intent["specific_columns"] != "":
             cols = intent["specific_columns"]
         # TO BE CHANGED TO IMPLEMENTATION WITH INTENT ID AND STORED DATA LATER
         #task_type, df = classify_task(intent["data"][0], cols)
-        task_type, df = classify_task(df, cols)
+        task_type, data = classify_task(data, cols)
         #task_type is num_classification or text_classification
         intent["task"] = task_type
-        intent["data"][0] = df
+        #delete the retrieved data as it's not needed anymore
+        if (os.path.exists(download_path) and os.path.isfile(download_path)):
+            os.remove(download_path)
+        #intent["data"][0] = df
     #send the parsed intent as policy to pipeline orchestrator
     return json_pipeline_orchestrator_fun(intent)
 

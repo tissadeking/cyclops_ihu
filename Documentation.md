@@ -36,7 +36,8 @@ The SQL database and the tables: users and data_store are created automatically 
 - This workflow involves the processing of analytical intents which are requests for generation of data analytics pipelines to be executed with CyclOps datasets.
 - It starts with the TUBS IHU Part receiving structured intents as put requests from the Info Retrieval through the intent API endpoint set up in main.py and the function *update_field* still in main.py.
 - The function then sends the received intents to the function *intent_compiler_fun_2* in intent_compiler.py.
-- *intent_compiler_fun_2* adds missing fields like scaling_bounds, test_fraction, etc, and also groups the task if it's classification into numerical or text classification, and then sends the policy to the function *json_pipeline_orchestrator_fun* inside json_pipeline_orchestrator.py.
+- *intent_compiler_fun_2* adds missing fields like scaling_bounds, test_fraction, etc, and also groups the task if it's classification into numerical or text classification based on how the data in question is. It retrieves the data from the long-term storage on minio using the object name contained in the data field of the intent. The object name is currently a combination of userid and exploratory intentid. 
+- After that, it sends the policy to the function *json_pipeline_orchestrator_fun* inside json_pipeline_orchestrator.py.
 - *json_pipeline_orchestrator_fun* generates the pipeline needed to fulfill the user request by defining the model to use, assigning the pre- and post-conditions based on the task, and creating a unique ID for the pipeline.
 - After everything, the pipeline is returned or sent as a post request to the Runtime Layer API endpoint by the function *update_field* in main.py
 

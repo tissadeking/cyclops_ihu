@@ -30,8 +30,8 @@ intent = {
         },
         "time": "last year",
         "query": "get the notices in Europe last year",
-        "intent_id": "98HTS73867T",
-        "userid": "!!06!E85QWE2VBJ6NNLV"
+        "intent_id": "5GDHT67S8S",
+        "userid": "Y8H!!!SU9A97DJJKSDFS"
     }
 }
 '''
@@ -41,7 +41,7 @@ intent = {
 intent = {
     "intent_type": "analytical",
     "fields": {
-        "data": ["reference to dataframe 1", "dataframe 2", "...."],
+        "data": ["Y8H!!!SU9A97DJJKSDFS_5GDHT67S8S", "dataframe 2", "...."],
         "task": "classification",
         "execution_type": ["training", "inference"],
         "target": "target variable",
@@ -62,7 +62,7 @@ intent = {
         },
         "query": "summary of the query",
         "intent_id": "XGTHSU45",
-        "userid": "!!06!E85QWE2VBJ6NNLV"
+        "userid": "Y8H!!!SU9A97DJJKSDFS"
     }
 
 }

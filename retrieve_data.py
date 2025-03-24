@@ -27,7 +27,7 @@ def retrieve_data_fun(df, intent_id, userid):
 
         # To store data in long-term storage (minio object store)
         # Example object details
-        object_name = userid + '-' + intent_id
+        object_name = userid + '_' + intent_id
         #write data to csv
         csv_name = intent_id + '.csv'
         df.to_csv(csv_name, index=False)
@@ -36,6 +36,9 @@ def retrieve_data_fun(df, intent_id, userid):
         ensure_bucket()
         #create the object inside the bucket in minio
         create_object(object_name, upload_path)
+        # delete the uploaded csv file as it's not needed anymore
+        if (os.path.exists(csv_name) and os.path.isfile(csv_name)):
+            os.remove(csv_name)
 
     return userid, intent_id, df_json, data_cols
 

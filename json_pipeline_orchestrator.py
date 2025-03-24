@@ -45,7 +45,7 @@ def json_pipeline_orchestrator_fun(policy):
     post_conditions = []
     #initial pipeline definition
     pipeline = {
-        "data": policy["data"][0],
+        "data": policy["data"],
         "task": policy["task"],
         "task_description": {
             "training": "",
@@ -125,7 +125,7 @@ def json_pipeline_orchestrator_fun(policy):
     print("pipeline: ", pipeline)
 
     #TO CHANGE BACK TO DATAFRAME LATER
-    pipeline["data"] = "data"
+    #pipeline["data"] = "data"
     return pipeline
 
 #json_pipeline_orchestrator_fun(intent["fields"])

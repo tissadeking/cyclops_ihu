@@ -15,7 +15,7 @@ minio_endpoint = config.minio_endpoint
 access_key = config.access_key
 secret_key = config.secret_key
 bucket_name = config.bucket_name
-print(minio_endpoint, access_key, secret_key, bucket_name)
+#print(minio_endpoint, access_key, secret_key, bucket_name)
 
 # Initialize MinIO client
 minio_client = Minio(
