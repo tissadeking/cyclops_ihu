@@ -21,7 +21,7 @@ The SQL database and the tables: users and data_store are created automatically 
 - For each key-value combination in the extract_list, the function calls *match_llm_zero* function within match_policies.py to use Large Language Models (LLM) to find the best class_description from the class_description_list that matches the key-value combination, it adds its corresponding class to a query_class_list it created.
 - It does same with the property_description_list and finds the best property_description that matches the key-value combination, and adds its corresponding property to a query_property_list it created.
 - A combination of each class in the query_class_list as key and a property in the query_property_list as value gives a query_dict. All possible query_dicts are added to a query_list.
-- The query_list plus the userid, intentid and the data makes the policy.
+- The query_list plus the userid, intentid and the data make the policy.
 - Back in main.py, the function *update_field* passes the policy to the function *sparql_generator_fun* in sparql_generator.py.
 - The function *sparql_generator_fun* first generates sparql queries with the policy using the function *generate_sparql_queries* within the same *sparql_generator_fun*. After which it sends the generated queries to the function *data_retriever_fun* which is inside data_retriever.py. 
 - *data_retriever_fun* uses the function *execute_sparql_queries* also found in the same script to query the sparql endpoint of IKB defined in the config.yml file. It retrieves this data afterwards in the form of a dataframe.
