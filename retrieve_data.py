@@ -20,7 +20,9 @@ def retrieve_data_fun(df, intent_id, userid, query):
     data_cols = df.columns.tolist()
     data_cols = json.dumps(data_cols)
     #convert data to json
-    df_json = df.to_json()
+    #df_json = df.to_json()
+    df_json = df.to_json(orient="columns", force_ascii=False)
+    df_json = df_json.replace("\\/", "/")
     if df_json != {}:
         #delete existing entry in the data store with the same user id and intent id with incoming user id and intent id
         delete_data_store(userid, intent_id)
@@ -46,9 +48,10 @@ def retrieve_data_fun(df, intent_id, userid, query):
     try:
         #query the retrieved data
         answer = llm_query_fun_3_8(query, df_text)
+        #answer = df_json
         #answer = json.loads(answer)
     except:
-        #if it doesn't work it returns the data as a json
+        #if it doesn't work return the data as a json
         answer = df_json
 
     return userid, intent_id, answer, data_cols
