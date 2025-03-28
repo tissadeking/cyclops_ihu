@@ -5,8 +5,8 @@ services:
   minio:
     image: quay.io/minio/minio
     container_name: my_minio
-    #networks:
-    #  - docker_ihu_default
+    networks:
+      - docker_ihu_default
     ports:
       - "9100:9000"  # MinIO API on port 9100
       - "9101:9001"  # MinIO Console on port 9101
@@ -24,8 +24,8 @@ services:
   mysql:
     image: mysql:latest
     container_name: mysql-container
-    #networks:
-    #  - docker_ihu_default
+    networks:
+      - docker_ihu_default
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password123
@@ -42,8 +42,8 @@ services:
   ihu:
     build: .
     container_name: ihu
-    #networks:
-    #  - docker_ihu_default
+    networks:
+      - docker_ihu_default
     ports:
       - "5002:5002"
     depends_on:
@@ -60,5 +60,5 @@ services:
 #  minio_data:
   # driver: local
 
-#networks:
-#  docker_ihu_default:
+networks:
+  docker_ihu_default:

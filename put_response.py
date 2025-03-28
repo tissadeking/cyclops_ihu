@@ -7,7 +7,7 @@ import json
 url = "http://127.0.0.1:5002/intent"
 
 #exploratory intent
-intent = {
+'''intent = {
     "intent_type": "exploratory",
     "fields": {
         "data": "public procurement",
@@ -66,7 +66,7 @@ intent = {
     }
 
 }
-'''
+
 
 '''from minio import Minio
 minio_endpoint = "localhost:9100"

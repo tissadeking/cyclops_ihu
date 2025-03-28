@@ -1,10 +1,9 @@
 import os
-
 import pandas as pd, config
 from match_policies import match_llm_zero
 from json_pipeline_orchestrator import json_pipeline_orchestrator_fun
 from classify_text_or_num import classify_task
-from minio_crud import retrieve_object
+from minio_crud import retrieve_object, create_object
 #from match_policies_tfidf import match_tfidf
 
 #read the policy store into a dataframe
@@ -137,6 +136,17 @@ def intent_compiler_fun_2(intent):
         # TO BE CHANGED TO IMPLEMENTATION WITH INTENT ID AND STORED DATA LATER
         #task_type, df = classify_task(intent["data"][0], cols)
         task_type, data = classify_task(data, cols)
+        #after classifying, if task_type is text_classification data is modified, so save new data in minio
+        if task_type == 'text_classification':
+            new_object_name = intent["data"][0] + '_text'
+            upload_path = new_object_name + '.csv'
+            data.to_csv(upload_path, index=False)
+            create_object(new_object_name, upload_path)
+            #modify name of data in policy
+            intent["data"][0] = new_object_name
+            # delete the uploaded data as it's not needed anymore
+            if (os.path.exists(upload_path) and os.path.isfile(upload_path)):
+                os.remove(upload_path)
         #task_type is num_classification or text_classification
         intent["task"] = task_type
         #delete the retrieved data as it's not needed anymore

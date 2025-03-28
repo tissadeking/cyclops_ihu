@@ -12,6 +12,7 @@ file_path = "policy_store.csv"
 download_path = "policy_store_downloaded.csv"'''
 
 minio_endpoint = config.minio_endpoint
+#minio_endpoint = "localhost:9000"
 access_key = config.access_key
 secret_key = config.secret_key
 bucket_name = config.bucket_name
@@ -81,6 +82,7 @@ def list_objects():
             print(f" - {obj.object_name}")
     except S3Error as e:
         print(f"Error listing objects: {e}")
+
 
 # Example usage
 '''if __name__ == "__main__":
